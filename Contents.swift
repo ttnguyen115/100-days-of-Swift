@@ -111,3 +111,51 @@ print(kia.self)
 kia.changeGear(to: false)
 print(kia.self)
 print("------------------------------------------------------------------------------");
+
+// Checkpoint 7 - classes, inheritance
+print("Checkpoint 7 - classes, inheritance");
+
+class Animal {
+    private var legs: Int
+    
+    init(legs: Int) {
+        self.legs = legs
+    }
+    
+    func speak() {
+        print("something")
+    }
+}
+
+class Dog: Animal {
+    init() {
+        super.init(legs: 4)
+    }
+    
+    override func speak() {
+        print("bark bark bark")
+    }
+}
+
+class Cat: Animal {
+    private var isTame: Bool
+    
+    init(isTame: Bool) {
+        self.isTame = isTame
+        super.init(legs: 4)
+    }
+    
+    override func speak() {
+        print("meow meow moew")
+    }
+}
+
+let bird = Animal(legs: 2)
+let poodle = Dog()
+let tamago = Cat(isTame: true)
+
+bird.speak()
+poodle.speak()
+tamago.speak()
+
+print("------------------------------------------------------------------------------");
