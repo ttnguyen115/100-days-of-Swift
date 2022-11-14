@@ -89,16 +89,18 @@ print("-------------------------------------------------------------------------
 // Checkpoint 6 - structs, computed properties, property observers, access control, static properties and methods
 print("Checkpoint 6 - structs, computed properties, property observers, access control, static properties and methods");
 struct Car {
-    static private let model = "Kia"
-    static private let numberOfSeats = 6
+    private let model: String
+    private let numberOfSeats: Int
     private var currentGear: Bool
     
     init(_ currentGear: Bool) {
+        self.model = "Roll Royces"
+        self.numberOfSeats = 6
         self.currentGear = currentGear
     }
     
     mutating func changeGear(to isGearUp: Bool) {
-        print("Car model is \(Car.model) and there are \(Car.numberOfSeats) seats")
+        print("Car model is \(self.model) and there are \(self.numberOfSeats) seats")
         if isGearUp {
             self.currentGear = true
         } else {
@@ -157,5 +159,57 @@ let tamago = Cat(isTame: true)
 bird.speak()
 poodle.speak()
 tamago.speak()
+print("------------------------------------------------------------------------------");
+
+// Checkpoint 8 - protocols, extensions
+print("Checkpoint 8 - protocols, extensions");
+protocol Building {
+    var numberOfRooms: Int { get set }
+    var cost: Int { get set }
+    var agentName: String { get set }
+    func salesSummary()
+}
+
+struct House: Building {
+    var numberOfRooms: Int
+    var cost: Int
+    var agentName: String
+    
+    init(numberOfRooms: Int, cost: Int, agentName: String) {
+        self.numberOfRooms = numberOfRooms
+        self.cost = cost
+        self.agentName = agentName
+    }
+    
+    func salesSummary() {
+        print("This house costs \(cost) with \(numberOfRooms) rooms and is saled by \(agentName) agency.")
+    }
+}
+
+struct Office: Building {
+    var numberOfRooms: Int
+    var cost: Int
+    var agentName: String
+    
+    init(numberOfRooms: Int, cost: Int, agentName: String) {
+        self.numberOfRooms = numberOfRooms
+        self.cost = cost
+        self.agentName = agentName
+    }
+    
+    func salesSummary() {
+        print("This office costs \(cost) with \(numberOfRooms) rooms and is saled by \(agentName) agency.")
+    }
+}
+
+var house = House(numberOfRooms: 4, cost: 500_000, agentName: "Test 1")
+var office = Office(numberOfRooms: 6, cost: 2_000_000, agentName: "Test 2")
+house.salesSummary()
+office.salesSummary()
+print("------------------------------------------------------------------------------");
+
+// Checkpoint 9 - optionals, nil coalescing
+print("Checkpoint 9 - optionals, nil coalescing");
+
 
 print("------------------------------------------------------------------------------");
